@@ -1,0 +1,8 @@
+@CHARSET "ISO-8859-1";
+footer {
+	width: 100%;
+}
+
+footer p {
+	float: right;
+}
