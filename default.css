@@ -6,3 +6,11 @@ footer {
 footer p {
 	float: right;
 }
+
+footer p a {
+	text-decoration: none;
+}
+
+footer p a:hover {
+	text-decoration: underline;
+}
