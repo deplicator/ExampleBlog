@@ -1,5 +1,5 @@
 <footer>
-	<p>Site by James</p>
+	<p>Example Blog by you!</p>
 </footer>
 
 </body>
