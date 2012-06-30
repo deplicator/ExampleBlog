@@ -1,0 +1,36 @@
+h1 {
+	width: 380px;
+	margin: 0 auto 20px;
+	padding: 0;
+}
+
+#menu > li {
+	width: 350px;
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+
+#menu > li a {
+	padding: 6px;
+	color: #fff;
+	background: #333;
+	text-decoration: none;
+}
+
+#control-panel, #entries, fieldset {
+	
+}
+
+#control-panel {
+	
+}
+
+input, textarea {
+	
+}
+
+.backlink {
+	border: 0;
+	text-align: right;
+}
