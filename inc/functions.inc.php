@@ -1,6 +1,6 @@
 <?php
 
-function retrieveEntries($db, $id=null) {
+function retrieveEntries($db, $page, $id=null) {
 	if(isset($id)) {
 		$sql = "SELECT title, entry FROM entries WHERE id=? LIMIT 1";
 		$stmt = $db->prepare($sql);
@@ -11,18 +11,25 @@ function retrieveEntries($db, $id=null) {
 		$fulldisp = true;
 		
 	} else {
-		$sql = "SELECT id, title FROM entries ORDER BY created DESC";
-		foreach($db->query($sql) as $row) {
-			$e[] = array('id' => $row['id'], 'title' => $row['title']);
+		$sql = "SELECT id, page, title, entry FROM entries WHERE page=? ORDER BY created DESC";
+		$stmt = $db->prepare($sql);
+		$stmt->execute(array($page));
+		
+		$e = null; //declare variable to avoid errors
+		
+		while($row = $stmt->fetch()) {
+			$e[] = $row;
 		}
 		
 		$fulldisp = false;
-		
-		if(!is_array($e)) {
-			$fulldisplay = true;
-			$e = array('title' => 'No Entries', 'entry' => '<a href="/admin.php">Post an Entry!</a>');
-		}
+
 	}
+	
+	if(!is_array($e)) {
+		$fulldisp = true;
+		$e = array('title' => 'No Entries yet', 'entry' => 'make one maybe?');
+	}
+	
 	array_push($e, $fulldisp);
 	return $e;
 }

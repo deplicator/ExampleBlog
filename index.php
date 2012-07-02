@@ -6,12 +6,23 @@ include_once 'inc/db.inc.php';
 //Open a database connection
 try {
 	$db = new PDO(DB_INFO, DB_USER, DB_PASS);
+	
+	/*
+	 * Figure out what page is being requested (defaut is blog)
+	 * Perform basic sanitazation on the variable as well
+	 */
+	if(isset($_GET['page'])) {
+		$page = htmlentities(strip_tags($_GET['page']));
+	} else {
+		$page = 'blog';
+	}
+	
 
 //Determine if entry ID was passed in URL
 $id = (isset($_GET['id'])) ? (int) $_GET['id'] : null;
 
 //Load enties
-$e = retrieveEntries($db, $id);
+$e = retrieveEntries($db, $page, $id);
 
 //Get fulldisp flag
 $fulldisp = array_pop($e);
