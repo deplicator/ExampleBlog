@@ -4,7 +4,8 @@ include_once 'inc/functions.inc.php';
 include_once 'inc/db.inc.php';
 
 //Open a database connection
-$db = new PDO(DB_INFO, DB_USER, DB_PASS);
+try {
+	$db = new PDO(DB_INFO, DB_USER, DB_PASS);
 
 //Determine if entry ID was passed in URL
 $id = (isset($_GET['id'])) ? (int) $_GET['id'] : null;
@@ -19,8 +20,6 @@ $fulldisp = array_pop($e);
 $e = sanitizeData($e);
 
 ?>
-
-<h1>Example Blog</h1>
 
 <div id="entries">
 <?php 
@@ -50,6 +49,10 @@ else {
 	</p>
 	
 <?php }
+
+} catch(Exception $e) {
+	echo $e->getMessage();
+}
 ?>
 
 </div>

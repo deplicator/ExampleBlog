@@ -7,3 +7,4 @@
 </head>
 
 <body>
+<h1>Example Blog</h1>
