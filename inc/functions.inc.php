@@ -27,7 +27,7 @@ function retrieveEntries($db, $page, $id=null) {
 	
 	if(!is_array($e)) {
 		$fulldisp = true;
-		$e = array('title' => 'No Entries yet', 'entry' => 'make one maybe?');
+		$e = array('title' => 'No Entries yet', 'entry' => '<a href="admin.php?page=' . $page . '">Make one</a>');
 	}
 	
 	array_push($e, $fulldisp);

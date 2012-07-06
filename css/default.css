@@ -21,7 +21,7 @@ h1 {
 }
 
 #control-panel, #entries, fieldset {
-	width: 350px;
+	width: 390px;
 	margin: 0 auto;
 	padding: 10px;
 }
@@ -95,6 +95,10 @@ input[type=submit] {
 
 .comment > span > stong {
 	float: left;
+}
+
+#entries {
+	border: 1px solid;
 }
 
 footer {

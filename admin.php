@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Example Blog</title>
-	<link rel="stylesheet" href="./css/default.css" type="text/css" />
-</head>
+<?php 
+include 'header.php';
 
-<body>
-	<h1>Example Blog</h1>
-	
+if(isset($_GET['page'])) {
+	$page = htmlentities(strip_tags($_GET['page']));
+} else {
+	$page = 'blog';
+}
+?>	
 	<form method="post" action="inc/update.inc.php">
 		<fieldset>
 			<legend>New Entry Submission</legend>
@@ -17,9 +16,10 @@
 			<label>Entry
 				<textarea name="entry" cols="45" rows="10"></textarea>
 			</label>
+			<input type="hidden" name="page" value="<?php echo $page; ?>" />
 			<input type="submit" name="submit" value="Save Entry">
 			<input type="submit" name="submit" value="Cancel">			
 		</fieldset>
 	</form>
-</body>
-</html>
+
+<?php include 'footer.php';?>

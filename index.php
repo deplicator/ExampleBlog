@@ -56,7 +56,7 @@ else {
 <?php
 	} ?>
 	<p class="backlink">
-		<a href="admin.php">Post New Entry</a>
+		<a href="admin.php?page=<?php echo $page; ?>">Post New Entry</a>
 	</p>
 	
 <?php }
