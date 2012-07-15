@@ -1,30 +1,40 @@
 <?php
 
-function retrieveEntries($db, $page, $id=null) {
-	if(isset($id)) {
-		$sql = "SELECT title, entry FROM entries WHERE id=? LIMIT 1";
+function retrieveEntries($db, $page, $url=null) {
+	/*
+	 * If an entry URL was supplied, load the associated entry.
+	 */
+	if(isset($url)) {
+		$sql = "SELECT id, page, title, entry FROM entries WHERE url=? LIMIT 1";
 		$stmt = $db->prepare($sql);
-		$stmt->execute(array($_GET['id']));
-
-		$e = $stmt->fetch();
-
-		$fulldisp = true;
+		$stmt->execute(array($url));
 		
+		//Saver returned entry array.
+		$e = $stmt->fetch();
+		
+		//Set the fulldisp flag for single entry.
+		$fulldisp = false;
+
+	/* 
+	 * If no entry URl provided, load all entry info for the page.
+	 */
 	} else {
-		$sql = "SELECT id, page, title, entry FROM entries WHERE page=? ORDER BY created DESC";
+		$sql = "SELECT id, page, title, entry, url FROM entries WHERE page=? ORDER BY created DESC";
 		$stmt = $db->prepare($sql);
 		$stmt->execute(array($page));
 		
-		$e = null; //declare variable to avoid errors
+		$e = null; //Declare variable to avoid errors.
 		
+		//Loop through returned results and store as an array.
 		while($row = $stmt->fetch()) {
 			$e[] = $row;
 		}
-		
 		$fulldisp = false;
-
 	}
 	
+	/*
+	 * Default display message for when no entries are returned.
+	 */
 	if(!is_array($e)) {
 		$fulldisp = true;
 		$e = array('title' => 'No Entries yet', 'entry' => '<a href="admin.php?page=' . $page . '">Make one</a>');
