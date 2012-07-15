@@ -7,7 +7,7 @@ if(isset($_GET['page'])) {
 	$page = 'blog';
 }
 ?>	
-	<form method="post" action="inc/update.inc.php">
+	<form method="post" action="/ExampleBlog/inc/update.inc.php">
 		<fieldset>
 			<legend>New Entry Submission</legend>
 			<label>Title

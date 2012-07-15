@@ -13,7 +13,7 @@ function retrieveEntries($db, $page, $url=null) {
 		$e = $stmt->fetch();
 		
 		//Set the fulldisp flag for single entry.
-		$fulldisp = false;
+		$fulldisp = true;
 
 	/* 
 	 * If no entry URl provided, load all entry info for the page.
@@ -50,4 +50,10 @@ function sanitizeData($data) {
 	} else {
 		return array_map('sanitizeData', $data);
 	}
+}
+
+function makeUrl($title) {
+    $patterns = array('/\s+/', '/(?!-)\W+/');
+    $replcements = array('-', ' ');
+    return preg_replace($replcements, $patterns, $strtolower($title));
 }

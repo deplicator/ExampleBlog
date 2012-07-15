@@ -18,11 +18,11 @@ try {
 	}
 	
 
-//Determine if entry ID was passed in URL
-$id = (isset($_GET['id'])) ? (int) $_GET['id'] : null;
+//Determine if entry URL was passed
+$url = (isset($_GET['url'])) ? $_GET['url'] : null;
 
 //Load enties
-$e = retrieveEntries($db, $page, $id);
+$e = retrieveEntries($db, $page, $url);
 
 //Get fulldisp flag
 $fulldisp = array_pop($e);
@@ -34,7 +34,12 @@ $e = sanitizeData($e);
 
 <div id="entries">
 <?php 
-if($fulldisp===true) { ?>
+if($fulldisp===true) { 
+
+    //Get the URL if one wasn't passed.
+    $url = (isset($url)) ? $url : $e['url'];
+
+?>
 
 <h2><?php echo $e['title']; ?></h2>
 <p><?php echo $e['entry']; ?>
@@ -48,7 +53,7 @@ else {
 	foreach($e as $entry) { ?>
 	
 		<p>
-			<a href="?id=<?php echo $entry['id']; ?>">
+			<a href="<?php echo $entry['page']; ?>/<?php echo $entry['url']; ?>">
 				<?php echo $entry['title']; ?>
 			</a>
 		</p>
@@ -56,7 +61,7 @@ else {
 <?php
 	} ?>
 	<p class="backlink">
-		<a href="admin.php?page=<?php echo $page; ?>">Post New Entry</a>
+		<a href="admin/<?php echo $page; ?>">Post New Entry</a>
 	</p>
 	
 <?php }
