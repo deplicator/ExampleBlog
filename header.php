@@ -8,7 +8,7 @@ include_once 'inc/db.inc.php';
 <html>
 
     <head>
-        <title>Example Blog</title>
+        <title><?php echo BLOGTITLE; ?></title>
         <link rel="stylesheet" type="text/css" href="<?php echo URL; ?>/css/default.css" />
     </head>
 
