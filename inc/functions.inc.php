@@ -53,7 +53,10 @@ function sanitizeData($data) {
 }
 
 function makeUrl($title) {
-    $patterns = array('/\s+/', '/(?!-)\W+/');
-    $replcements = array('-', ' ');
-    return preg_replace($replcements, $patterns, $strtolower($title));
+    $patterns = array(
+        '/\s+/', 
+        '/(?!-)\W+/'
+    );
+    $replcements = array('-', '');
+    return preg_replace($patterns, $replcements, strtolower($title));
 }

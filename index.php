@@ -1,7 +1,5 @@
 <?php
 include 'header.php';
-include_once 'inc/functions.inc.php';
-include_once 'inc/db.inc.php';
 
 //Open a database connection
 try {
@@ -44,7 +42,7 @@ if($fulldisp===true) {
 <h2><?php echo $e['title']; ?></h2>
 <p><?php echo $e['entry']; ?>
 <p class="backlink">
-	<a href="./">Back to list of entries.</a>
+	<a href="<?php echo URL; ?>">Back to list of entries.</a>
 </p>
 
 <?php } //end if statement
@@ -61,7 +59,7 @@ else {
 <?php
 	} ?>
 	<p class="backlink">
-		<a href="admin/<?php echo $page; ?>">Post New Entry</a>
+		<a href="<?php echo URL; ?>/admin/<?php echo $page; ?>">Post New Entry</a>
 	</p>
 	
 <?php }
