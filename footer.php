@@ -1,5 +1,5 @@
 <footer>
-	<p>Example Blog by you!</p>
+    <p>Example Blog by you!</p>
 </footer>
 
 </body>
