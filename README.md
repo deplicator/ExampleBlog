@@ -6,8 +6,9 @@ http://www.apress.com/9781430224730/
 
 For the most part I followed his instructions.
 
+[![Build Status](https://travis-ci.org/deplicator/ExampleBlog.png?branch=master)](https://travis-ci.org/deplicator/ExampleBlog)
 
-==Rewrite Issues==
+## Rewrite Issues
 I had a problem getting the RewriteRules to work correctly. I didn't see anything
 about it in the book, but there is a good chance I missed it. I learned there is
 a lot more to RewriteRules than simply editing the .htaccess file.
